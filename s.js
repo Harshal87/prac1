@@ -44,6 +44,8 @@ function additem(event)
 event.preventDefault();
 console.log(text.value,desc.value);
 
+localStorage.setItem(text.value,desc.value)
+
 // New list element
 var li=document.createElement('li')
 
@@ -51,12 +53,19 @@ var li=document.createElement('li')
 li.className='list-group-item'
 
 // add text value to new li element
-li.append(text.value,desc.value)
+
+//create title element to append in list
+var title=document.createElement('strong')
+title.textContent=text.value;
+
+var content=document.createElement('p')
+content.textContent=desc.value
+li.append(title,content)
 
 
 list.appendChild(li)
 
-console.log(li)
+console.log('nice',li)
 // document.appendChild(li)
 
 var btn=document.createElement('button')
@@ -69,7 +78,7 @@ var btn1=document.createElement('button')
 
 btn1.append('edit')
 
-btn1.className="btn btn-sm btn-info float-right"
+btn1.className="btn btn-sm btn-info float-right edit"
 
 
 console.log(btn)
@@ -77,11 +86,14 @@ console.log(btn)
 li.append(btn)
 li.append(btn1)
 
+text.value=''
+desc.value=''
+
 }
 var edit_btn=document.createElement('button')
 
 edit_btn.append('edit')
-edit_btn.className="btn btn-secondary"
+edit_btn.className="btn btn-secondary "
 
 list.appendChild(edit_btn)
 
@@ -92,6 +104,14 @@ function delonClick(event)
  {
     event.target.parentNode.remove()
  }
+
+ else if(event.target.classList.contains('edit'))
+ {
+    text.value=event.target.parentNode.firstChild.textContent;
+    desc.value=event.target.parentNode.children[1].textContent;
+    event.target.parentNode.remove()
+ }
+
 
 
 }
@@ -146,3 +166,29 @@ else
 )
 
 }
+
+
+// Select the edit button from HTML
+
+// let geteditbtn=document.querySelectorAll(".edit")
+
+// filter.addEventListener('click',edit_on_click);
+// let a=document.querySelectorAll('b-edit')
+// console.log(a)
+// a.addEventListener('click',edit_on_click)
+// console.log(a)
+// console.log(items.querySelectorAll('.edit'))
+
+
+
+
+
+// function edit_on_click(event)
+// {
+//  if(event.target.classList.contains('edit'))
+//  {
+//     event.target.parentNode.remove()
+//  }
+
+
+// }
