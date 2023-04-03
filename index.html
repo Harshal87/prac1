@@ -10,25 +10,35 @@
 <body>
   <header id="main-header" class="bg-success text-white p-4 mb-3">
     <div class="container">
-      <h1 id="header-title">Item Listener <span style="display:none">123</span></h1>
-      <input type="text" placeholder="Enter text to search" class=" input-group-addon m-1 " id="filter">
-      <input type="text" placeholder="Enter description for item " class="input-group-addon m-1" id="desc">
+      <h1 id="header-title">Expense Tracker <span style="display:none">123</span></h1>
+      <input type="text" placeholder="Enter Expense Item to search" class=" input-group-addon m-1 " id="filter">
+      <!-- <input type="text" placeholder="Enter description for item " class="input-group-addon m-1" id="desc"> -->
     </div>
   </header>
   <div class="container">
    <div id="main" class="card card-body">
-    <h2 class="title">Add Items</h2>
+    <h2 class="title">Add Expenses</h2>
     <form id="addForm" class="form-inline mb-3">
-      <input type="text" class="form-control mr-2 m-1" id="text-value" placeholder="Enter item name">
-      <input type="text" class="custom-control-description form-control mr-2 m-1" id="text-desc" placeholder="Enter item description">
+      <input type="text" class="form-control mr-2 m-1" id="text-value" placeholder="Enter Expense Amount">
+      <input type="text" class="custom-control-description form-control mr-2 m-1" id="text-desc" placeholder="Enter Description">
+      <div>
+        <label for="Items " class="nav-item align-content-sm-center">Expense Items</label>
+      <select name="Items" id="exp-items" class="p-2 align-content-around form-control-range">
+        <option value="">Choose an item...</option>
+        <option value="fuel">Fuel</option>
+        <option value="food">Food</option>
+        <option value="electricity">Electricity</option>
+        <option value="movie">Movie</option>
+      </select>
+    </div>
       <input type="submit" class="btn btn-dark m-1" id="submit-btn" >
     </form>
     <h2 class="title">Items</h2>
     <ul id="items" class="list-group">
-      <li class="list-group-item"><strong>Item 1</strong><p>This is item 1 </p><button class="btn btn-danger  btn-sm float-right delete" >X</button><button id='b-edit'class="btn btn-sm btn-info float-right edit" >edit</button> </li>
-      <li class="list-group-item"><strong>Item 2</strong><p>This is item 2 </p><button class="btn btn-danger  btn-sm float-right delete" >X</button><button id='b-edit' class="btn btn-sm btn-info float-right edit" >edit</button> </li>
-      <li class="list-group-item"><strong>Item 3</strong><p>This is item 3 </p><button class="btn btn-danger  btn-sm float-right delete" >X</button><button id='b-edit' class="btn btn-sm btn-info float-right edit" >edit</button> </li>
-      <li class="list-group-item"><strong>Item 4</strong><p>This is item 4 </p><button class="btn btn-danger  btn-sm float-right delete">X</button><button id='b-edit' class="btn btn-sm btn-info float-right edit" >edit</button> </li>
+      <li class="list-group-item"><strong>200</strong><p>Dinner </p><strong>Food</strong><button class="btn btn-danger  btn-sm float-right delete" >X</button><button id='b-edit'class="btn btn-sm btn-info float-right edit" >edit</button> </li>
+      <li class="list-group-item"><strong>500</strong><p> Bills</p><strong>Electricity</strong><button class="btn btn-danger  btn-sm float-right delete" >X</button><button id='b-edit' class="btn btn-sm btn-info float-right edit" >edit</button> </li>
+      <li class="list-group-item"><strong>300</strong><p>Petrol </p><strong>Fuel</strong><button class="btn btn-danger  btn-sm float-right delete" >X</button><button id='b-edit' class="btn btn-sm btn-info float-right edit" >edit</button> </li>
+      <li class="list-group-item"><strong>1000</strong><p>Vacation </p><strong>Movie</strong><button class="btn btn-danger  btn-sm float-right delete">X</button><button id='b-edit' class="btn btn-sm btn-info float-right edit" >edit</button> </li>
     </ul>
    </div>
   </div>

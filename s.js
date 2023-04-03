@@ -34,6 +34,8 @@ let text=document.getElementById('text-value')
 
 let desc=document.getElementById('text-desc')
 
+let exp_item=document.getElementById('exp-items')
+
 //get the description for the items in list
 // let descp=document.getElementById('descp-value')
 
@@ -42,9 +44,9 @@ function additem(event)
 {
 // prevent the default action of submit event   
 event.preventDefault();
-console.log(text.value,desc.value);
+console.log(text.value,desc.value,exp_item.value);
 
-localStorage.setItem(text.value,desc.value)
+localStorage.setItem(text.value,desc.value+exp_item.value)
 
 // New list element
 var li=document.createElement('li')
@@ -60,14 +62,17 @@ title.textContent=text.value;
 
 var content=document.createElement('p')
 content.textContent=desc.value
-li.append(title,content)
+
+var sel_item=document.createElement('strong')
+sel_item.textContent=exp_item.value
+li.append(title,content,sel_item)
 
 
 list.appendChild(li)
 
 console.log('nice',li)
-// document.appendChild(li)
 
+// document.appendChild(li)
 var btn=document.createElement('button')
 
 btn.append('X')
@@ -124,10 +129,11 @@ function filter_text(event)
 var text= event.target.value.toLowerCase()
 
 // convert the list to array and iterate each element of array
-
 Array.from(list.getElementsByTagName('li')).forEach(function(item)
 {
-    if(item.firstChild.textContent.toLowerCase().indexOf(text)!=-1)
+    console.log('one',item.children[2])
+   // if('one',item.children[2]==text)
+    if(item.children[2].textContent.toLowerCase().indexOf(text)!=-1)
     {
         item.style.display='block'
     }
