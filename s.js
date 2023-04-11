@@ -24,6 +24,12 @@ form.addEventListener('submit',additem);
 list.addEventListener('click',delonClick);
 
 //filter keyup event
+let sum=0
+var container=document.getElementById('addForm')
+var final_value=document.createElement('strong')
+    final_value.textContent="Expense Sum : "+sum
+    final_value.classList="form-control p-3 background-color:red"
+    container.append(final_value)
 filter.addEventListener('keyup',filter_text);
 
 //description keyup event
@@ -47,6 +53,14 @@ event.preventDefault();
 console.log(text.value,desc.value,exp_item.value);
 
 localStorage.setItem(text.value,desc.value+exp_item.value)
+
+axios.post('https://crudcrud.com/api/a3ad20c4f0164b76b35b6ddfd9e3912d/appointmentEntries' ,{
+Expense_Amount:text.value,
+Description:desc.value,
+Expense_Item:exp_item.value
+}
+).catch(err=>console.error(err));
+
 
 // New list element
 var li=document.createElement('li')
@@ -125,16 +139,20 @@ function delonClick(event)
 
 function filter_text(event)
 {
+sum=0
+
 // convert text to lowercase    
 var text= event.target.value.toLowerCase()
 
 // convert the list to array and iterate each element of array
 Array.from(list.getElementsByTagName('li')).forEach(function(item)
 {
-    console.log('one',item.children[2])
    // if('one',item.children[2]==text)
     if(item.children[2].textContent.toLowerCase().indexOf(text)!=-1)
     {
+        console.log('one',item.firstChild.textContent)
+    let val=parseInt(item.firstChild.textContent)
+    sum=sum+val
         item.style.display='block'
     }
 
@@ -144,8 +162,12 @@ Array.from(list.getElementsByTagName('li')).forEach(function(item)
     }
 }
 
-
 )
+
+final_value.textContent="Expense Sum : "+sum
+
+
+
 
 }
 
